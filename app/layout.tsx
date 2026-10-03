@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Eliyo — Your personal car assistant",
-  description:
-    "Eliyo keeps track of maintenance, mileage, documents and your car’s history — and tells you what needs attention.",
+  title: "Eliyo | Personal car assistant",
+  description: "Eliyo keeps track of maintenance, mileage, documents and your car’s history. It tells you what needs attention.",
   other: {
     "codex-preview": "development",
   },
