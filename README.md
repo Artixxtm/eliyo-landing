@@ -31,6 +31,7 @@ Copy `.env.example` to `.env.local` and add the Clarity project ID:
 
 ```env
 NEXT_PUBLIC_CLARITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SITE_URL=https://eliyo.app
 ```
 
 The Clarity script is loaded only after the visitor accepts cookies.
