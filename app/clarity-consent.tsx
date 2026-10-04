@@ -1,21 +1,22 @@
 "use client";
 
+import Clarity from "@microsoft/clarity";
 import { useEffect, useState } from "react";
 
 const CONSENT_KEY = "eliyo-cookie-consent";
-const CLARITY_SCRIPT_ID = "eliyo-clarity";
+let clarityStarted = false;
 
 function startClarity() {
   const projectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID?.trim();
 
-  if (!projectId || document.getElementById(CLARITY_SCRIPT_ID)) return;
+  if (!projectId || clarityStarted) return;
 
-  const script = document.createElement("script");
-  script.id = CLARITY_SCRIPT_ID;
-  script.async = true;
-  script.src = `https://www.clarity.ms/tag/${encodeURIComponent(projectId)}`;
-  script.referrerPolicy = "strict-origin-when-cross-origin";
-  document.head.appendChild(script);
+  Clarity.init(projectId);
+  Clarity.consentV2({
+    ad_Storage: "denied",
+    analytics_Storage: "granted",
+  });
+  clarityStarted = true;
 }
 
 export function ClarityConsent() {
@@ -29,7 +30,10 @@ export function ClarityConsent() {
       return;
     }
 
-    if (consent !== "declined") setVisible(true);
+    if (consent !== "declined") {
+      const frame = window.requestAnimationFrame(() => setVisible(true));
+      return () => window.cancelAnimationFrame(frame);
+    }
   }, []);
 
   function chooseConsent(consent: "accepted" | "declined") {
