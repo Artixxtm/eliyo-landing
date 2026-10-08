@@ -33,10 +33,12 @@ export function SupportPage({ locale }: { locale: Locale }) {
 export function DeleteAccountPage({ locale }: { locale: Locale }) {
   const t = resourceCopy[locale].deleteAccount;
   const mailto = `mailto:eliyo.app@gmail.com?subject=${encodeURIComponent(t.subject)}&body=${encodeURIComponent(t.body)}`;
+  const partialMailto = `mailto:eliyo.app@gmail.com?subject=${encodeURIComponent(t.partialSubject)}&body=${encodeURIComponent(t.partialBody)}`;
   return (
     <ResourceFrame locale={locale} resource="delete-account">
       <header className="help-page__header"><p className="legal-document__eyebrow">Eliyo</p><h1>{t.title}</h1><p>{t.description}</p></header>
       <section className="help-page__section"><h2>{t.stepsTitle}</h2><ol className="deletion-steps">{t.steps.map((step) => <li key={step}>{step}</li>)}</ol><a className="primary-email-link primary-email-link--button" href={mailto}>{t.button}<span>eliyo.app@gmail.com</span></a><p className="help-page__note">{t.inApp}</p></section>
+      <section className="help-page__section partial-deletion-section"><h2>{t.partialTitle}</h2><p>{t.partialDescription}</p><p className="help-page__note">{t.partialInstruction}</p><a className="primary-email-link primary-email-link--button" href={partialMailto}>{t.partialButton}<span>eliyo.app@gmail.com</span></a></section>
       <div className="deletion-grid">
         <section><h2>{t.deletedTitle}</h2><ul>{t.deleted.map((item) => <li key={item}>{item}</li>)}</ul></section>
         <section><h2>{t.retainedTitle}</h2><p>{t.retained}</p></section>
