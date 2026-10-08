@@ -40,7 +40,8 @@ The Clarity script is loaded only after the visitor accepts analytics cookies. T
 
 ## Pre-publication legal checks
 
-- Replace the publication-date placeholders.
-- Resolve the postal/geographic address placeholder before publication if legal review confirms it is required.
-- Replace the transactional-email provider placeholder with the provider configured in hosted Supabase Auth.
 - Confirm that the Privacy Policy AI list matches the providers enabled in production secrets and routing.
+- Confirm Clarity Consent Mode remains enabled and that production masking and recording settings match the Privacy Policy.
+- Keep App Store privacy disclosures and Google Play Data Safety answers aligned with the production app and provider flows.
+- Verify in-app account deletion and Sign in with Apple token revocation before App Store submission.
+- Keep legal pages, support details and store metadata aligned if contact aliases change later.
