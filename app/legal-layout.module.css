@@ -1,0 +1,13 @@
+.inlineLink {
+  color: #17161a;
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-color: #6b58de;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color 160ms ease;
+}
+
+.inlineLink:hover {
+  color: #6b58de;
+}

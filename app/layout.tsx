@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClarityConsent } from "./clarity-consent";
 import "./globals.css";
 
 const SITE_URL =
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 
   title: {
     default: "Eliyo - Personal Car Assistant",
-    template: "%s - Eliyo",
+    template: "%s",
   },
 
   description:
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
       },
     ],
     shortcut: "/favicon.png",
-    apple: "/apple-touch-icon.png",
+    apple: "/icon-192.png",
   },
 
   alternates: {
@@ -150,7 +151,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <ClarityConsent />
+      </body>
     </html>
   );
 }

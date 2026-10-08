@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { FaAndroid, FaApple } from "react-icons/fa";
-import { ClarityConsent } from "./clarity-consent";
+import { SiteFooter } from "./site-footer";
 import { copy, locales, type Locale } from "./site-copy";
 
 const localeOrder: Locale[] = ["en", "uk", "pl", "ru"];
@@ -71,7 +71,7 @@ export function LandingPage({ locale = "en" }: { locale?: Locale }) {
         </div>
       </section>
 
-      <ClarityConsent />
+      <SiteFooter locale={locale} hero />
     </main>
   );
 }

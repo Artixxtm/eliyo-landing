@@ -5,51 +5,21 @@ const SITE_URL =
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
+  const localePrefixes = { en: "", uk: "/ua", pl: "/pl", ru: "/ru" } as const;
+  const resources = ["", "/privacy", "/terms", "/support", "/delete-account"] as const;
 
-  const languages = {
-    en: SITE_URL,
-    uk: `${SITE_URL}/ua`,
-    pl: `${SITE_URL}/pl`,
-    ru: `${SITE_URL}/ru`,
-    "x-default": SITE_URL,
-  };
+  return resources.flatMap((resource) => {
+    const languages = Object.fromEntries(
+      Object.entries(localePrefixes).map(([language, prefix]) => [language, `${SITE_URL}${prefix}${resource}`]),
+    );
+    languages["x-default"] = `${SITE_URL}${resource}`;
 
-  return [
-    {
-      url: SITE_URL,
+    return Object.values(localePrefixes).map((prefix) => ({
+      url: `${SITE_URL}${prefix}${resource}`,
       lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-      alternates: {
-        languages,
-      },
-    },
-    {
-      url: `${SITE_URL}/ua`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-      alternates: {
-        languages,
-      },
-    },
-    {
-      url: `${SITE_URL}/pl`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-      alternates: {
-        languages,
-      },
-    },
-    {
-      url: `${SITE_URL}/ru`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-      alternates: {
-        languages,
-      },
-    },
-  ];
+      changeFrequency: resource ? "monthly" as const : "weekly" as const,
+      priority: resource ? 0.6 : 1,
+      alternates: { languages },
+    }));
+  });
 }
