@@ -1132,6 +1132,15 @@ button {
     font-size: clamp(38px, 12vw, 54px);
   }
 
+  .resource-shell.resource-privacy.locale-ru .legal-document h1,
+  .resource-shell.resource-privacy.locale-uk .legal-document h1 {
+    max-width: 100%;
+    font-size: clamp(27px, 8.1vw, 36px);
+    letter-spacing: -0.045em;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
   .legal-document__intro {
     margin-top: 34px;
     padding-bottom: 38px;

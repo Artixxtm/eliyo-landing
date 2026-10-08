@@ -27,7 +27,7 @@ export function ResourceHeader({ locale, resource }: { locale: Locale; resource:
 export function LegalPage({ locale, resource, document }: { locale: Locale; resource: "privacy" | "terms"; document: LegalDocument }) {
   const t = resourceCopy[locale];
   return (
-    <div className="resource-shell">
+    <div className={`resource-shell resource-${resource} locale-${locale}`}>
       <ResourceHeader locale={locale} resource={resource} />
       <main className="legal-document">
         <a className="resource-back" href={localizedPath(locale)}>← {t.back}</a>
