@@ -41,9 +41,9 @@ export function LegalPage({ locale, resource, document }: { locale: Locale; reso
           </div>
         </header>
         <div className="legal-document__sections">
-          {document.sections.map((section) => (
+          {document.sections.map((section, index) => (
             <section key={section.heading}>
-              <h2>{section.heading}</h2>
+              <h2>{`${index + 1}. ${section.heading.replace(/^\d+[A-Za-z]?\.\s*/, "")}`}</h2>
               {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               {section.bullets && <ul>{section.bullets.map((item) => <li key={item}>{item}</li>)}</ul>}
               {section.link && <p><a className={styles.inlineLink} href={section.link.href}>{section.link.label}</a></p>}

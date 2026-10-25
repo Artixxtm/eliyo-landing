@@ -24,7 +24,7 @@ export const resourceCopy = {
     cookies: {
       label: "Cookie consent",
       title: "We use cookies",
-      text: "We use Microsoft Clarity only with your permission to understand how the website is used.",
+      text: "Essential site functions do not require consent. We use Microsoft Clarity only with your permission to understand how the website is used.",
       accept: "Accept",
       decline: "Decline",
       close: "Close cookie settings",
@@ -85,7 +85,7 @@ export const resourceCopy = {
     cookies: {
       label: "Згода на cookies",
       title: "Ми використовуємо cookies",
-      text: "Ми використовуємо Microsoft Clarity лише з вашого дозволу, щоб розуміти, як використовується сайт.",
+      text: "Необхідні функції сайту не потребують згоди. Ми використовуємо Microsoft Clarity лише з вашого дозволу, щоб розуміти, як використовується сайт.",
       accept: "Прийняти",
       decline: "Відхилити",
       close: "Закрити налаштування cookies",
@@ -146,7 +146,7 @@ export const resourceCopy = {
     cookies: {
       label: "Zgoda na cookies",
       title: "Używamy cookies",
-      text: "Korzystamy z Microsoft Clarity wyłącznie za Twoją zgodą, aby rozumieć sposób używania witryny.",
+      text: "Niezbędne funkcje witryny nie wymagają zgody. Korzystamy z Microsoft Clarity wyłącznie za Twoją zgodą, aby rozumieć sposób używania witryny.",
       accept: "Akceptuję",
       decline: "Odrzuć",
       close: "Zamknij ustawienia cookies",
@@ -207,7 +207,7 @@ export const resourceCopy = {
     cookies: {
       label: "Согласие на cookies",
       title: "Мы используем cookies",
-      text: "Мы используем Microsoft Clarity только с вашего разрешения, чтобы понимать, как используется сайт.",
+      text: "Необходимые функции сайта не требуют согласия. Мы используем Microsoft Clarity только с вашего разрешения, чтобы понимать, как используется сайт.",
       accept: "Принять",
       decline: "Отклонить",
       close: "Закрыть настройки cookies",

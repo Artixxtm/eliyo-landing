@@ -19,7 +19,7 @@ export type LegalDocument = {
 
 const privacyEn: LegalDocument = {
   title: "Privacy Policy",
-  updated: "Last updated: 07.10.2026",
+  updated: "Last updated: 16.10.2026",
   intro: [
     "Eliyo is operated by Artem Naumenko, an individual based in Poland.",
     "Contact: eliyo.app@gmail.com",
@@ -32,7 +32,7 @@ const privacyEn: LegalDocument = {
     },
     {
       heading: "2. Account and profile information",
-      paragraphs: ["When you create or use an Eliyo account, we may process your email address, display name, language and locale, profile image, authentication identifiers, account timestamps, confirmation that you are at least 18 and the confirmation timestamp, and security information. Authentication may use email and password, Google Sign-In or Sign in with Apple. OAuth providers may share limited profile information after you authorize the connection. Eliyo does not receive your Google or Apple password."],
+      paragraphs: ["When you create or use an Eliyo account, we may process your email address, display name, language and locale, profile image, authentication identifiers, account timestamps and security information. Authentication may use email and password, Google Sign-In or Sign in with Apple. OAuth providers may share limited profile information after you authorize the connection. Eliyo does not receive your Google or Apple password."],
     },
     {
       heading: "3. Vehicle information",
@@ -87,6 +87,14 @@ const privacyEn: LegalDocument = {
       paragraphs: [
         "Vercel hosts and delivers the Eliyo website and may process standard technical information such as IP address, browser and device type, requested pages, approximate region and security logs.",
         "Microsoft Clarity starts only after you accept analytics cookies. If accepted, Clarity may collect page activity, device information, clicks, scrolling, mouse movements and session or interaction recordings used for behavior analytics. Advertising storage is disabled in Eliyo’s consent configuration. Your choice is stored on your device and can be changed or withdrawn through Cookie settings. Declining analytics does not prevent use of the website.",
+      ],
+    },
+    {
+      heading: "13A. Eliyo Lab voting and ideas",
+      paragraphs: [
+        "Voting in Eliyo Lab does not require an account. An essential anonymous session is created only when you first vote or submit an idea. We place a cryptographically random session token in a protected HttpOnly, SameSite cookie and store only its SHA-256 hash in Supabase. The session limits one active vote per feature and lets you withdraw that vote.",
+        "To prevent automated abuse and apply rate limits, the server converts the request IP address into a keyed HMAC fingerprint. The raw IP address is not stored in the Eliyo Lab voting tables, and the fingerprint is used as an abuse signal rather than as an assertion of a person’s identity. This processing is based on our legitimate interests in protecting the integrity and availability of the feature.",
+        "Ideas are reviewed before publication. Your name and profile link are published only if you expressly choose attribution; otherwise the idea remains anonymous. The essential Lab session is separate from Microsoft Clarity analytics and does not depend on analytics consent. Session, voting, suggestion and abuse-prevention records are kept only as long as reasonably needed to operate and protect the feature, review submissions and meet legal or security obligations.",
       ],
     },
     {
@@ -154,10 +162,6 @@ const privacyEn: LegalDocument = {
       paragraphs: ["We use reasonable measures such as authenticated access, restricted database and storage permissions, private file storage, controlled file access, secure network transport and provider access controls. No service can guarantee absolute security. Eliyo is not an end-to-end encrypted storage service, and authorized systems and providers may process information where necessary to provide a requested feature. Report suspected compromise to eliyo.app@gmail.com."],
     },
     {
-      heading: "22. Children",
-      paragraphs: ["You must be at least 18 years old to create or use an Eliyo account. Eliyo is not directed to anyone under 18. If we learn that an account was created or used by someone under 18, we may suspend or delete the account and associated information."],
-    },
-    {
       heading: "23. Sale of data and advertising",
       paragraphs: ["Eliyo does not sell personal data. Eliyo does not use personal data for third-party behavioral advertising and does not use an advertising SDK in the mobile application."],
     },
@@ -181,7 +185,6 @@ const termsEn: LegalDocument = {
     "By creating an account or using Eliyo, you agree to these Terms and acknowledge the Privacy Policy. If you do not agree, do not use Eliyo.",
   ],
   sections: [
-    { heading: "1. Eligibility", paragraphs: ["You must be at least 18 years old, legally permitted to use Eliyo in your country and capable of entering into these Terms. Eliyo is not directed to anyone under 18."] },
     { heading: "2. What Eliyo provides", paragraphs: ["Eliyo helps organize mileage, maintenance, service history, expenses, vehicle documents, reminders and vehicle-related questions. Features may vary by subscription, device, country, vehicle, provider availability and app version. Eliyo does not guarantee that every feature or integration is available for every user or vehicle."] },
     { heading: "3. Your account", paragraphs: ["You are responsible for accurate account information, protecting access to your account, activity performed through it and notifying us about suspected unauthorized access, except to the extent that unauthorized activity results from Eliyo’s failure to use reasonable security measures. You may not use another person’s identity or an account you are not authorized to access."] },
     { heading: "4. Vehicle information and reminders", paragraphs: ["Eliyo depends on information you provide, including mileage, service history, vehicle details and document dates. You are responsible for keeping it accurate and current. Maintenance dates, estimates and reminders may be incomplete, delayed or inaccurate. Eliyo does not replace your vehicle manual, manufacturer instructions, inspections or advice from a qualified mechanic. Do not delay urgent maintenance, repairs or safety checks because of information shown by Eliyo."] },
@@ -192,7 +195,7 @@ const termsEn: LegalDocument = {
     { heading: "9. Acceptable use", bullets: ["Do not use Eliyo unlawfully or violate another person’s rights.", "Do not access another user’s account or data.", "Do not interfere with security, probe infrastructure or upload malicious code.", "Do not abuse AI, scanning or subscription systems or bypass access controls.", "Do not reverse engineer Eliyo except where law expressly permits it.", "Do not use automation that places an unreasonable load on the service."], paragraphs: ["We may restrict or suspend access where reasonably necessary to protect users, providers or the service."] },
     { heading: "10. Third-party services", paragraphs: ["Eliyo relies on providers for authentication, cloud storage, AI processing, vehicle lookup, subscriptions, app distribution, website hosting and consent-based analytics. Their own terms and privacy policies may apply. We are not responsible for third-party services outside our reasonable control, except where responsibility cannot legally be excluded."] },
     { heading: "11. Eliyo intellectual property", paragraphs: ["The Eliyo app, website, branding, mascot, interface, code and original content are owned by or licensed to the operator. You receive a personal, limited, revocable, non-exclusive and non-transferable right to use Eliyo for its intended purpose. These Terms do not transfer ownership of Eliyo intellectual property."] },
-    { heading: "12. Availability and changes", paragraphs: ["We aim to keep Eliyo available and reliable but do not guarantee uninterrupted or error-free operation. Features may change for the reasons and subject to the safeguards described in Section 7, including technical development, security, provider availability and legal or platform requirements. We may suspend Eliyo for maintenance, security or circumstances outside our reasonable control. Where required by applicable law, we will provide clear advance notice and any applicable right to cancel or terminate before a material negative change to an active paid service takes effect."] },
+    { heading: "12. Availability and changes", paragraphs: ["We aim to keep Eliyo available and reliable but do not guarantee uninterrupted or error-free operation. Features may change for the reasons and subject to the safeguards described in Section 6, including technical development, security, provider availability and legal or platform requirements. We may suspend Eliyo for maintenance, security or circumstances outside our reasonable control. Where required by applicable law, we will provide clear advance notice and any applicable right to cancel or terminate before a material negative change to an active paid service takes effect."] },
     { heading: "13. Account deletion and suspension", paragraphs: ["You may request deletion through Eliyo or the external account-deletion page. Deletion removes or schedules removal of associated Eliyo data, subject to legal obligations, security needs and provider backups. Deleting your Eliyo account does not cancel an Apple App Store or Google Play subscription, which must be cancelled separately through the store account used to purchase it. We may suspend or terminate access for a material violation, a security or legal risk, invalid payment entitlement or a legal or platform requirement. Where reasonable and required, we will provide notice and an opportunity to resolve the issue."], link: { href: "/delete-account", label: "Open the Eliyo account-deletion page" } },
     { heading: "14. Privacy", paragraphs: ["Personal data is handled as described in the Eliyo Privacy Policy, including the providers involved and your options for access, export and deletion."], link: { href: "/privacy", label: "Read the Eliyo Privacy Policy" } },
     { heading: "15. Disclaimers", paragraphs: ["Eliyo is a vehicle information and organization tool. To the extent permitted by law, we do not guarantee that all information will be complete, current or error-free, or that Eliyo will prevent mechanical failures, penalties, missed renewals or other losses. You remain responsible for operating and maintaining your vehicle safely and lawfully. Nothing in these Terms excludes statutory warranties or consumer protections that cannot legally be excluded."] },

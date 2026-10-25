@@ -6,7 +6,7 @@ const SITE_URL =
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const localePrefixes = { en: "", uk: "/ua", pl: "/pl", ru: "/ru" } as const;
-  const resources = ["", "/privacy", "/terms", "/support", "/delete-account"] as const;
+  const resources = ["", "/lab", "/privacy", "/terms", "/support", "/delete-account"] as const;
 
   return resources.flatMap((resource) => {
     const languages = Object.fromEntries(
@@ -17,8 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return Object.values(localePrefixes).map((prefix) => ({
       url: `${SITE_URL}${prefix}${resource}`,
       lastModified,
-      changeFrequency: resource ? "monthly" as const : "weekly" as const,
-      priority: resource ? 0.6 : 1,
+      changeFrequency: resource === "/lab" || !resource ? "weekly" as const : "monthly" as const,
+      priority: !resource ? 1 : resource === "/lab" ? 0.8 : 0.6,
       alternates: { languages },
     }));
   });

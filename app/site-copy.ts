@@ -11,6 +11,34 @@ export const copy = {
   en: {
     nav: ["Why", "How it works", "FAQ", "Download"],
     hero: ["Personal car assistant", "Know what your car needs next.", "Eliyo keeps track of maintenance, mileage, documents and your car’s history. It tells you what needs attention.", "Coming soon", "See how it works", "For iPhone & Android"],
+    showcase: {
+      title: "Eliyo brings your car’s maintenance, mileage, documents, costs and history into one clear picture.",
+      intro: "So you can stop carrying it all in your head and see",
+      accent: "what needs attention next.",
+      cards: [
+        ["One vehicle profile", "The important details stay attached to the car they belong to."],
+        ["What’s next comes first", "See the nearest action and how much time or mileage remains."],
+        ["History keeps its context", "Every service, expense and mileage update stays in one timeline."],
+        ["An assistant with context", "Ask questions using the information and history already in Eliyo."],
+      ],
+      labels: ["Coming up", "Oil service", "~798 km", "Documents", "4 files", "Mileage", "202,656 km", "Today", "Service added", "Ask about your car", "When should I change the oil?"],
+    },
+    roadmap: {
+      title: "The road ahead.",
+      intro: "Now. Next. Later.",
+      scrollCta: "Explore the roadmap",
+      items: [
+        ["01", "Closed Beta", "Now", "Testing the essentials before launch."],
+        ["02", "Public Launch", "Next", "Eliyo lands on iPhone and Android."],
+        ["03", "Smarter Eliyo", "Later", "Better insights and smarter reminders."],
+        ["04", "Motorcycles", "Later", "Mileage, service and history for your bike."],
+        ["05", "Eliyo for Business", "Exploring", "Tools for fleets and transport teams."],
+        ["06", "Connected Care", "Vision", "Trusted service connections."],
+      ],
+      outroTitle: "Have an idea?",
+      outroText: "",
+      outroCta: "Feedback",
+    },
     cards: ["Oil service", "~798 km remaining", "Insurance", "Renews in 24 days", "Nothing urgent", "Your Citroën is doing fine."],
     why: {
       kicker: "Why Eliyo",
@@ -25,11 +53,14 @@ export const copy = {
     how: {
       kicker: "How it works",
       title: "Add your car. Eliyo takes it from there.",
-      intro: "Three simple steps. No setup marathon, no spreadsheet, no magical promises.",
+      intro: "Six clear steps. Start with what you know and let Eliyo build the picture.",
       steps: [
         ["Add your car", "Use the VIN or add it manually. Start with what you already know."],
-        ["Eliyo builds the picture", "Add mileage, service history, documents and the things you want to track."],
-        ["Know what’s next", "Open Eliyo and see what’s fine, what’s approaching and what needs attention."],
+        ["Set a starting point", "Add the current mileage and the latest service information you have."],
+        ["Choose what to track", "Select maintenance, documents, insurance, expenses and important dates."],
+        ["Describe how you drive", "Choose the driving profile that most closely matches your everyday use."],
+        ["Get a care plan", "Eliyo turns the information into upcoming maintenance and useful reminders."],
+        ["Keep it current", "Update mileage from a photo or enter it manually whenever it changes."],
       ],
       phone: ["Add your car", "Start with a VIN, or enter the details yourself.", "Scan VIN", "Add manually", "Evening, Artem.", "Nothing urgent with your C3.", "Coming up", "Engine oil", "Based on your latest mileage", "Due in ~798 km", "Updated today"],
     },
@@ -50,6 +81,34 @@ export const copy = {
   uk: {
     nav: ["Навіщо", "Як це працює", "FAQ", "Завантажити"],
     hero: ["Персональний асистент для авто", "Знайте, що потрібно вашому авто далі.", "Eliyo стежить за обслуговуванням, пробігом, документами та історією авто. Він підказує, що потребує уваги.", "Скоро", "Як це працює", "Для iPhone та Android"],
+    showcase: {
+      title: "Eliyo збирає обслуговування, пробіг, документи, витрати та історію авто в одну зрозумілу картину.",
+      intro: "Щоб не тримати все це в голові й одразу бачити,",
+      accent: "що потребуватиме уваги далі.",
+      cards: [
+        ["Один профіль авто", "Важливі дані залишаються прив’язаними до авто, якого вони стосуються."],
+        ["Найближче — спочатку", "Бачте наступну дію та скільки часу або пробігу до неї залишилося."],
+        ["Історія зберігає контекст", "Кожен сервіс, витрата й оновлення пробігу лишаються в одній хронології."],
+        ["Асистент із контекстом", "Ставте запитання з урахуванням даних та історії, які вже є в Eliyo."],
+      ],
+      labels: ["Наближається", "Заміна мастила", "~798 км", "Документи", "4 файли", "Пробіг", "202 656 км", "Сьогодні", "Сервіс додано", "Запитайте про авто", "Коли замінити мастило?"],
+    },
+    roadmap: {
+      title: "Що далі.",
+      intro: "Зараз. Далі. Згодом.",
+      scrollCta: "Переглянути roadmap",
+      items: [
+        ["01", "Закритий тест", "Зараз", "Перевіряємо основне перед запуском."],
+        ["02", "Публічний запуск", "Далі", "Eliyo виходить на iPhone та Android."],
+        ["03", "Розумніший Eliyo", "Пізніше", "Точніші підказки й розумніші нагадування."],
+        ["04", "Мотоцикли", "Пізніше", "Пробіг, сервіс та історія мотоцикла."],
+        ["05", "Eliyo для бізнесу", "Досліджуємо", "Інструменти для автопарків і перевізників."],
+        ["06", "Пов’язаний сервіс", "Бачення", "Зв’язок із перевіреними сервісами."],
+      ],
+      outroTitle: "Є ідея?",
+      outroText: "",
+      outroCta: "Ідея",
+    },
     cards: ["Заміна мастила", "залишилось ~798 км", "Страхування", "Подовжити через 24 дні", "Нічого термінового", "З вашим Citroën усе добре."],
     why: {
       kicker: "Навіщо Eliyo", title: "У вашого авто багато всього, що треба памʼятати. Вам не обовʼязково.",
@@ -61,8 +120,8 @@ export const copy = {
       labels: ["ДАЛІ", "ІСТОРІЯ", "НАГАДУВАННЯ", "Заміна мастила", "Сервіс завершено", "Пробіг оновлено", "Подовження страховки", "Сьогодні", "24 дні"],
     },
     how: {
-      kicker: "Як це працює", title: "Додайте авто. Далі Eliyo допоможе.", intro: "Три прості кроки. Без довгого налаштування, таблиць і магічних обіцянок.",
-      steps: [["Додайте авто", "Скористайтеся VIN або додайте вручну. Почніть із того, що вже знаєте."], ["Eliyo збирає картину", "Додайте пробіг, історію сервісу, документи й те, за чим хочете стежити."], ["Знайте, що далі", "Відкрийте Eliyo й побачте, що в нормі, що наближається і що потребує уваги."]],
+      kicker: "Як це працює", title: "Додайте авто. Далі Eliyo допоможе.", intro: "Шість зрозумілих кроків. Почніть із того, що знаєте, а Eliyo збере картину.",
+      steps: [["Додайте авто", "Скористайтеся VIN або додайте вручну. Почніть із того, що вже знаєте."], ["Задайте початкову точку", "Додайте поточний пробіг і останню відому інформацію про обслуговування."], ["Оберіть, за чим стежити", "Позначте обслуговування, документи, страхування, витрати й важливі дати."], ["Розкажіть, як ви їздите", "Оберіть профіль водіння, що найбільше відповідає вашому щоденному використанню."], ["Отримайте план догляду", "Eliyo перетворить дані на майбутнє обслуговування й корисні нагадування."], ["Підтримуйте актуальність", "Оновлюйте пробіг за фото або вводьте його вручну, коли він змінюється."]],
       phone: ["Додайте авто", "Почніть із VIN або введіть дані самостійно.", "Сканувати VIN", "Додати вручну", "Добрий вечір, Артеме.", "З вашим C3 нічого термінового.", "Наближається", "Моторна олива", "На основі останнього пробігу", "Через ~798 км", "Оновлено сьогодні"],
     },
     faq: {
@@ -75,6 +134,34 @@ export const copy = {
   pl: {
     nav: ["Dlaczego", "Jak to działa", "FAQ", "Pobierz"],
     hero: ["Osobisty asystent auta", "Wiedz, czego Twoje auto potrzebuje dalej.", "Eliyo śledzi serwis, przebieg, dokumenty i historię auta. Podpowiada, co wymaga uwagi.", "Już wkrótce", "Zobacz, jak to działa", "Na iPhone’a i Androida"],
+    showcase: {
+      title: "Eliyo łączy serwis, przebieg, dokumenty, wydatki i historię auta w jeden przejrzysty obraz.",
+      intro: "Nie musisz trzymać tego wszystkiego w głowie — od razu widzisz,",
+      accent: "co wymaga uwagi dalej.",
+      cards: [
+        ["Jeden profil auta", "Ważne informacje pozostają przypisane do auta, którego dotyczą."],
+        ["Najbliższe na pierwszym planie", "Zobacz kolejne działanie oraz pozostały czas lub przebieg."],
+        ["Historia zachowuje kontekst", "Każdy serwis, wydatek i odczyt przebiegu pozostaje na jednej osi czasu."],
+        ["Asystent z kontekstem", "Pytaj na podstawie informacji i historii zapisanych już w Eliyo."],
+      ],
+      labels: ["Nadchodzi", "Wymiana oleju", "~798 km", "Dokumenty", "4 pliki", "Przebieg", "202 656 km", "Dzisiaj", "Dodano serwis", "Zapytaj o auto", "Kiedy wymienić olej?"],
+    },
+    roadmap: {
+      title: "Co dalej.",
+      intro: "Teraz. Następnie. Później.",
+      scrollCta: "Zobacz roadmapę",
+      items: [
+        ["01", "Zamknięte testy", "Teraz", "Sprawdzamy podstawy przed premierą."],
+        ["02", "Publiczna premiera", "Następne", "Eliyo trafia na iPhone’a i Androida."],
+        ["03", "Mądrzejsze Eliyo", "Później", "Lepsze wskazówki i przypomnienia."],
+        ["04", "Motocykle", "Później", "Przebieg, serwis i historia motocykla."],
+        ["05", "Eliyo dla firm", "Rozważamy", "Narzędzia dla flot i firm transportowych."],
+        ["06", "Połączony serwis", "Wizja", "Kontakt z zaufanymi serwisami."],
+      ],
+      outroTitle: "Masz pomysł?",
+      outroText: "",
+      outroCta: "Pomysł",
+    },
     cards: ["Wymiana oleju", "pozostało ok. 798 km", "Ubezpieczenie", "Odnowienie za 24 dni", "Nic pilnego", "Z Twoim Citroënem wszystko w porządku."],
     why: {
       kicker: "Dlaczego Eliyo", title: "Twoje auto ma wiele rzeczy, o których trzeba pamiętać. Ty nie musisz.",
@@ -82,8 +169,8 @@ export const copy = {
       labels: ["NASTĘPNE", "HISTORIA", "PRZYPOMNIENIE", "Wymiana oleju", "Serwis wykonany", "Przebieg zaktualizowany", "Odnowienie ubezpieczenia", "Dzisiaj", "24 dni"],
     },
     how: {
-      kicker: "Jak to działa", title: "Dodaj auto. Resztą zajmie się Eliyo.", intro: "Trzy proste kroki. Bez długiej konfiguracji, arkusza i magicznych obietnic.",
-      steps: [["Dodaj swoje auto", "Użyj VIN-u albo dodaj je ręcznie. Zacznij od tego, co już wiesz."], ["Eliyo układa całość", "Dodaj przebieg, historię serwisu, dokumenty i rzeczy, które chcesz śledzić."], ["Wiedz, co dalej", "Otwórz Eliyo i sprawdź, co jest w porządku, co się zbliża i co wymaga uwagi."]],
+      kicker: "Jak to działa", title: "Dodaj auto. Resztą zajmie się Eliyo.", intro: "Sześć prostych kroków. Zacznij od tego, co wiesz, a Eliyo ułoży całość.",
+      steps: [["Dodaj swoje auto", "Użyj VIN-u albo dodaj je ręcznie. Zacznij od tego, co już wiesz."], ["Ustaw punkt początkowy", "Dodaj aktualny przebieg i ostatnie znane informacje o serwisie."], ["Wybierz, co chcesz śledzić", "Wskaż serwis, dokumenty, ubezpieczenie, wydatki i ważne terminy."], ["Opisz, jak jeździsz", "Wybierz profil jazdy najlepiej odpowiadający codziennemu użytkowaniu auta."], ["Otrzymaj plan obsługi", "Eliyo zamieni dane w nadchodzące czynności serwisowe i przydatne przypomnienia."], ["Dbaj o aktualność", "Aktualizuj przebieg ze zdjęcia albo wpisuj go ręcznie, gdy się zmieni."]],
       phone: ["Dodaj swoje auto", "Zacznij od VIN-u albo wpisz dane samodzielnie.", "Zeskanuj VIN", "Dodaj ręcznie", "Dobry wieczór, Artem.", "Z Twoim C3 nic pilnego.", "Nadchodzi", "Olej silnikowy", "Na podstawie ostatniego przebiegu", "Za ok. 798 km", "Zaktualizowano dziś"],
     },
     faq: {
@@ -96,6 +183,34 @@ export const copy = {
   ru: {
     nav: ["Зачем", "Как работает", "FAQ", "Скачать"],
     hero: ["Персональный ассистент для авто", "Знайте, что понадобится вашей машине дальше.", "Eliyo следит за обслуживанием, пробегом, документами и историей авто. Он подсказывает, что требует внимания.", "Скоро", "Как это работает", "Для iPhone и Android"],
+    showcase: {
+      title: "Eliyo собирает обслуживание, пробег, документы, расходы и историю машины в одну понятную картину.",
+      intro: "Чтобы не держать всё это в голове и сразу видеть,",
+      accent: "что потребует внимания дальше.",
+      cards: [
+        ["Один профиль авто", "Важные данные остаются привязаны к машине, которой они принадлежат."],
+        ["Ближайшее — сначала", "Видно следующее действие и сколько времени или пробега до него осталось."],
+        ["История сохраняет контекст", "Каждый сервис, расход и обновление пробега остаются в одной хронологии."],
+        ["Ассистент с контекстом", "Задавайте вопросы с учётом данных и истории, которые уже есть в Eliyo."],
+      ],
+      labels: ["Приближается", "Замена масла", "~798 км", "Документы", "4 файла", "Пробег", "202 656 км", "Сегодня", "Сервис добавлен", "Спросите о машине", "Когда менять масло?"],
+    },
+    roadmap: {
+      title: "Что дальше.",
+      intro: "Сейчас. Дальше. Позже.",
+      scrollCta: "Посмотреть roadmap",
+      items: [
+        ["01", "Закрытый тест", "Сейчас", "Проверяем основное перед запуском."],
+        ["02", "Публичный запуск", "Дальше", "Eliyo выходит на iPhone и Android."],
+        ["03", "Умнее Eliyo", "Позже", "Точнее подсказки и умнее напоминания."],
+        ["04", "Мотоциклы", "Позже", "Пробег, сервис и история мотоцикла."],
+        ["05", "Eliyo для бизнеса", "Изучаем", "Инструменты для автопарков и перевозчиков."],
+        ["06", "Связанный сервис", "Видение", "Связь с проверенными сервисами."],
+      ],
+      outroTitle: "Есть идея?",
+      outroText: "",
+      outroCta: "Идея",
+    },
     cards: ["Замена масла", "осталось ~798 км", "Страховка", "Продлить через 24 дня", "Ничего срочного", "С вашим Citroën всё хорошо."],
     why: {
       kicker: "Зачем Eliyo", title: "У машины много всего, что нужно помнить. Вам не обязательно.",
@@ -103,15 +218,15 @@ export const copy = {
       labels: ["ДАЛЬШЕ", "ИСТОРИЯ", "НАПОМИНАНИЕ", "Замена масла", "Сервис завершён", "Пробег обновлён", "Продление страховки", "Сегодня", "24 дня"],
     },
     how: {
-      kicker: "Как это работает", title: "Добавьте машину. Дальше поможет Eliyo.", intro: "Три простых шага. Без долгой настройки, таблиц и магических обещаний.",
-      steps: [["Добавьте машину", "Используйте VIN или добавьте вручную. Начните с того, что уже знаете."], ["Eliyo собирает картину", "Добавьте пробег, историю сервиса, документы и то, за чем хотите следить."], ["Знайте, что дальше", "Откройте Eliyo и увидьте, что в норме, что приближается и что требует внимания."]],
+      kicker: "Как это работает", title: "Добавьте машину. Дальше поможет Eliyo.", intro: "Шесть понятных шагов. Начните с того, что знаете, а Eliyo соберёт картину.",
+      steps: [["Добавьте машину", "Используйте VIN или добавьте вручную. Начните с того, что уже знаете."], ["Задайте отправную точку", "Добавьте текущий пробег и последнюю известную информацию об обслуживании."], ["Выберите, за чем следить", "Отметьте обслуживание, документы, страховку, расходы и важные даты."], ["Расскажите, как вы ездите", "Выберите профиль вождения, который ближе всего к вашему обычному использованию авто."], ["Получите план ухода", "Eliyo превратит данные в предстоящее обслуживание и полезные напоминания."], ["Поддерживайте актуальность", "Обновляйте пробег по фото или вводите его вручную, когда он меняется."]],
       phone: ["Добавьте машину", "Начните с VIN или введите данные самостоятельно.", "Сканировать VIN", "Добавить вручную", "Добрый вечер, Артём.", "С вашим C3 ничего срочного.", "Приближается", "Моторное масло", "На основе последнего пробега", "Через ~798 км", "Обновлено сегодня"],
     },
     faq: {
       kicker: "Полезно знать", title: "Ответы на вопросы.",
       items: [["Eliyo работает с любой машиной?", "Да. Вы можете добавить автомобиль по VIN или вручную. Некоторые автоматические интеграции зависят от автомобиля и региона."], ["Eliyo автоматически считывает пробег?", "Для поддерживаемых автомобилей может быть доступна автоматическая синхронизация. В остальных случаях Eliyo использует последний введённый пробег и обновляет оценки после нового показания."], ["Нужно загружать документы?", "Нет. Документы необязательны. Eliyo работает без них."], ["Можно добавить больше одной машины?", "Да. В одном гараже можно хранить несколько автомобилей."], ["Eliyo будет на iPhone и Android?", "Да. Eliyo готовится к выпуску на iOS и Android."], ["Какие языки поддерживаются?", "Английский, украинский, польский и русский."]],
     },
-    download: ["Eliyo почти готов", "Не держите всю машину в голове.", "Ваша машина. Её история. Что дальше. В одном месте.", "Email", "Узнать о запуске", "Добавляем…", "Готово", "Одно полезное письмо на старте Eliyo. Без шума.", "Готово. Мы сообщим, когда Eliyo будет доступен.", "Вы уже в списке. Будем держать вас в курсе.", "Введите корректный email.", "Список ожидания временно недоступен. Попробуйте снова."],
+    download: ["Eliyo почти готов", "Не держите всю машину в голове.", "Ваша машина. Её история. Roadmap Eliyo. В одном месте.", "Email", "Узнать о запуске", "Добавляем…", "Готово", "Одно полезное письмо на старте Eliyo. Без шума.", "Готово. Мы сообщим, когда Eliyo будет доступен.", "Вы уже в списке. Будем держать вас в курсе.", "Введите корректный email.", "Список ожидания временно недоступен. Попробуйте снова."],
     footer: ["Для тех, кто предпочитает ездить, а не помнить даты обслуживания.", "Поддержка", "Конфиденциальность", "Условия", "Удалить аккаунт"],
   },
 } as const;
