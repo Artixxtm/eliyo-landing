@@ -28,13 +28,33 @@ const availability: Record<Locale, string> = {
   ru: "Скоро",
 };
 
-function PlatformBadge({ platform, label }: { platform: string; label: string }) {
-  return (
-    <div className="platform-badge" role="note" aria-label={`${label}: ${platform}`}>
+const googlePlayBadge: Record<Locale, { label: string; title: string }> = {
+  en: { label: "Now on Google Play", title: "Download" },
+  uk: { label: "Вже в Google Play", title: "Завантажити" },
+  pl: { label: "Już w Google Play", title: "Pobierz" },
+  ru: { label: "Уже в Google Play", title: "Скачать" },
+};
+
+function PlatformBadge({ platform, label, title = platform, href }: { platform: string; label: string; title?: string; href?: string }) {
+  const content = (
+    <>
       <span className="platform-symbol" aria-hidden="true">{platform === "iPhone" ? <FaApple /> : <FaAndroid />}</span>
-      <span><small>{label}</small><strong>{platform}</strong></span>
-    </div>
+      <span className="platform-badge__copy">
+        <small>{label}</small>
+        <strong>{title}</strong>
+      </span>
+    </>
   );
+
+  if (href) {
+    return (
+      <a className="platform-badge platform-badge--link" href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label}: ${title}`}>
+        {content}
+      </a>
+    );
+  }
+
+  return <div className="platform-badge" role="note" aria-label={`${label}: ${title}`}>{content}</div>;
 }
 
 function HeroTitle({ lines }: { lines: string[] }) {
@@ -156,7 +176,12 @@ export function LandingPage({ locale = "en" }: { locale?: Locale }) {
           <p>{t.hero[2]}</p>
           <div className="platform-badges" aria-label={t.hero[5]}>
             <PlatformBadge platform="iPhone" label={availability[locale]} />
-            <PlatformBadge platform="Android" label={availability[locale]} />
+            <PlatformBadge
+              platform="Android"
+              label={googlePlayBadge[locale].label}
+              title={googlePlayBadge[locale].title}
+              href="https://play.google.com/store/apps/details?id=app.eliyo.mobile"
+            />
           </div>
         </section>
 
