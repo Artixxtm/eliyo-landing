@@ -19,7 +19,7 @@ export type LegalDocument = {
 
 const privacyEn: LegalDocument = {
   title: "Privacy Policy",
-  updated: "Last updated: 16.10.2026",
+  updated: "Last updated: 27.10.2026",
   intro: [
     "Eliyo is operated by Artem Naumenko, an individual based in Poland.",
     "Contact: eliyo.app@gmail.com",
@@ -80,7 +80,7 @@ const privacyEn: LegalDocument = {
     },
     {
       heading: "12. Operational and security information",
-      paragraphs: ["Eliyo and its infrastructure providers may process limited technical and operational information such as IP address, request timestamps, browser or device headers, request status, error details, operation duration, backend and security logs, AI usage and quota information, subscription events and authentication events. We use this information to operate, secure and troubleshoot the service. Eliyo does not use an advertising SDK or build advertising profiles from app activity."],
+      paragraphs: ["Eliyo and its infrastructure providers may process limited technical and operational information such as IP address, request timestamps, browser or device headers, request status, error details, operation duration, backend and security logs, AI usage and quota information, subscription events and authentication events. We use this information to operate, secure and troubleshoot the service. Eliyo does not use an advertising SDK or build advertising profiles from app activity.", "To understand whether the initial product experience works, Eliyo records privacy-minimal account milestones: first and most recent app open, completion of initial vehicle setup, and whether the account returned during days 3–7 after signup. We do not record screen paths, taps, vehicle content or message content for this measurement. These milestones are linked to the account, used only for aggregate activation and retention analysis, and deleted with the account."],
     },
     {
       heading: "13. Website information and analytics",

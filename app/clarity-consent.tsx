@@ -13,14 +13,17 @@ let clarityStarted = false;
 function startClarity() {
   const projectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID?.trim();
 
-  if (!projectId || clarityStarted) return;
+  if (!projectId) return;
 
-  Clarity.init(projectId);
+  if (!clarityStarted) {
+    Clarity.init(projectId);
+    clarityStarted = true;
+  }
   Clarity.consentV2({
     ad_Storage: "denied",
     analytics_Storage: "granted",
   });
-  clarityStarted = true;
+  Clarity.consent(true);
 }
 
 function localeFromPath(pathname: string): Locale {
@@ -46,12 +49,18 @@ function withdrawClarity() {
 
 export function ClarityConsent() {
   const pathname = usePathname();
+  const isPrivateRoute = pathname.startsWith("/control/");
   const locale = localeFromPath(pathname);
   const t = resourceCopy[locale].cookies;
   const [visible, setVisible] = useState(false);
   const [isSettings, setIsSettings] = useState(false);
 
   useEffect(() => {
+    if (isPrivateRoute) {
+      withdrawClarity();
+      return;
+    }
+
     const consent = window.localStorage.getItem(CONSENT_KEY);
 
     if (consent === "accepted") {
@@ -63,16 +72,17 @@ export function ClarityConsent() {
       const frame = window.requestAnimationFrame(() => setVisible(true));
       return () => window.cancelAnimationFrame(frame);
     }
-  }, []);
+  }, [isPrivateRoute]);
 
   useEffect(() => {
+    if (isPrivateRoute) return;
     const openSettings = () => {
       setIsSettings(true);
       setVisible(true);
     };
     window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, openSettings);
     return () => window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, openSettings);
-  }, []);
+  }, [isPrivateRoute]);
 
   function chooseConsent(consent: "accepted" | "declined") {
     const previousConsent = window.localStorage.getItem(CONSENT_KEY);
@@ -86,7 +96,7 @@ export function ClarityConsent() {
     }
   }
 
-  if (!visible) return null;
+  if (isPrivateRoute || !visible) return null;
 
   return (
     <aside

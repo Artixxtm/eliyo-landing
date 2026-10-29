@@ -8,10 +8,22 @@ import { SiteFooter } from "./site-footer";
 import { copy, locales, type Locale } from "./site-copy";
 
 const phoneImages: Record<Locale, { src: string; alt: string }> = {
-  en: { src: "/eliyo-phone-hand.png", alt: "Eliyo app interface in English on a phone held in a hand" },
-  uk: { src: "/eliyo-phone-hand-ua.png", alt: "Інтерфейс застосунку Eliyo українською мовою на телефоні в руці" },
-  pl: { src: "/eliyo-phone-hand-pl.png", alt: "Polski interfejs aplikacji Eliyo na telefonie trzymanym w dłoni" },
-  ru: { src: "/eliyo-phone-hand-ru.png", alt: "Интерфейс приложения Eliyo на русском языке на телефоне в руке" },
+  en: {
+    src: "/eliyo-phone-hand.png",
+    alt: "Eliyo app interface in English on a phone held in a hand",
+  },
+  uk: {
+    src: "/eliyo-phone-hand-ua.png",
+    alt: "Інтерфейс застосунку Eliyo українською мовою на телефоні в руці",
+  },
+  pl: {
+    src: "/eliyo-phone-hand-pl.png",
+    alt: "Polski interfejs aplikacji Eliyo na telefonie trzymanym w dłoni",
+  },
+  ru: {
+    src: "/eliyo-phone-hand-ru.png",
+    alt: "Интерфейс приложения Eliyo на русском языке на телефоне в руке",
+  },
 };
 
 const heroLines: Record<Locale, string[]> = {
@@ -35,10 +47,22 @@ const googlePlayBadge: Record<Locale, { label: string; title: string }> = {
   ru: { label: "Уже в Google Play", title: "Скачать" },
 };
 
-function PlatformBadge({ platform, label, title = platform, href }: { platform: string; label: string; title?: string; href?: string }) {
+function PlatformBadge({
+  platform,
+  label,
+  title = platform,
+  href,
+}: {
+  platform: string;
+  label: string;
+  title?: string;
+  href?: string;
+}) {
   const content = (
     <>
-      <span className="platform-symbol" aria-hidden="true">{platform === "iPhone" ? <FaApple /> : <FaAndroid />}</span>
+      <span className="platform-symbol" aria-hidden="true">
+        {platform === "iPhone" ? <FaApple /> : <FaAndroid />}
+      </span>
       <span className="platform-badge__copy">
         <small>{label}</small>
         <strong>{title}</strong>
@@ -48,13 +72,27 @@ function PlatformBadge({ platform, label, title = platform, href }: { platform: 
 
   if (href) {
     return (
-      <a className="platform-badge platform-badge--link" href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label}: ${title}`}>
+      <a
+        className="platform-badge platform-badge--link"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${label}: ${title}`}
+      >
         {content}
       </a>
     );
   }
 
-  return <div className="platform-badge" role="note" aria-label={`${label}: ${title}`}>{content}</div>;
+  return (
+    <div
+      className="platform-badge"
+      role="note"
+      aria-label={`${label}: ${title}`}
+    >
+      {content}
+    </div>
+  );
 }
 
 function HeroTitle({ lines }: { lines: string[] }) {
@@ -69,8 +107,7 @@ function ProductStory({ locale }: { locale: Locale }) {
       <div className="about-shell">
         <span>[ About Eliyo ]</span>
         <h2 id="about-title">
-          <strong>{about.title}</strong>{" "}
-          <span>{about.intro}</span>{" "}
+          <strong>{about.title}</strong> <span>{about.intro}</span>{" "}
           <em>{about.accent}</em>
         </h2>
       </div>
@@ -84,7 +121,11 @@ function Roadmap({ locale }: { locale: Locale }) {
   const [number, title, status, description] = t.items[activeStep];
 
   return (
-    <section className="roadmap-section" id="roadmap" aria-labelledby="roadmap-title">
+    <section
+      className="roadmap-section"
+      id="roadmap"
+      aria-labelledby="roadmap-title"
+    >
       <div className="roadmap-shell">
         <header className="roadmap-heading roadmap-reveal">
           <div className="roadmap-heading__copy">
@@ -102,33 +143,64 @@ function Roadmap({ locale }: { locale: Locale }) {
             <p>{description}</p>
           </div>
 
-
-          <svg className="roadmap-path roadmap-path--desktop" viewBox="0 0 1440 560" preserveAspectRatio="none" aria-hidden="true">
-            <path className="roadmap-path__base" d="M80 330C160 330 220 250 320 250S460 330 560 330S700 250 820 250S960 330 1080 330S1240 250 1350 250" />
-            <path className="roadmap-path__progress" d="M80 330C160 330 220 250 320 250S460 330 560 330S700 250 820 250S960 330 1080 330S1240 250 1350 250" />
+          <svg
+            className="roadmap-path roadmap-path--desktop"
+            viewBox="0 0 1440 560"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              className="roadmap-path__base"
+              d="M80 330C160 330 220 250 320 250S460 330 560 330S700 250 820 250S960 330 1080 330S1240 250 1350 250"
+            />
+            <path
+              className="roadmap-path__progress"
+              d="M80 330C160 330 220 250 320 250S460 330 560 330S700 250 820 250S960 330 1080 330S1240 250 1350 250"
+            />
           </svg>
 
-          <svg className="roadmap-path roadmap-path--mobile" viewBox="0 0 60 620" preserveAspectRatio="none" aria-hidden="true">
-            <path className="roadmap-path__base" d="M30 15C4 70 56 120 30 175S4 280 30 335S56 440 30 495S4 565 30 610" />
-            <path className="roadmap-path__progress" d="M30 15C4 70 56 120 30 175S4 280 30 335S56 440 30 495S4 565 30 610" />
+          <svg
+            className="roadmap-path roadmap-path--mobile"
+            viewBox="0 0 60 620"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              className="roadmap-path__base"
+              d="M30 15C4 70 56 120 30 175S4 280 30 335S56 440 30 495S4 565 30 610"
+            />
+            <path
+              className="roadmap-path__progress"
+              d="M30 15C4 70 56 120 30 175S4 280 30 335S56 440 30 495S4 565 30 610"
+            />
           </svg>
 
           <div className="roadmap-nodes" role="list">
-            {t.items.map(([stepNumber, stepTitle, stepStatus, stepDescription], index) => (
-              <div className={`roadmap-node-slot roadmap-node-slot--${index + 1}`} role="listitem" key={stepNumber}>
-                <button
-                  className={`roadmap-node ${activeStep === index ? "is-active" : ""} ${index === 0 ? "is-current" : ""}`}
-                  type="button"
-                  aria-pressed={activeStep === index}
-                  aria-label={`${stepNumber}. ${stepTitle}. ${stepStatus}`}
-                  onClick={() => setActiveStep(index)}
+            {t.items.map(
+              ([stepNumber, stepTitle, stepStatus, stepDescription], index) => (
+                <div
+                  className={`roadmap-node-slot roadmap-node-slot--${index + 1}`}
+                  role="listitem"
+                  key={stepNumber}
                 >
-                  <span className="roadmap-node__point">{stepNumber}</span>
-                  <span className="roadmap-node__title">{stepTitle}</span>
-                  <span className="roadmap-node__description">{stepDescription}</span>
-                </button>
-              </div>
-            ))}
+                  <button
+                    className={`roadmap-node ${activeStep === index ? "is-active" : ""} ${index === 0 ? "is-current" : ""}`}
+                    type="button"
+                    aria-pressed={activeStep === index}
+                    aria-label={`${stepNumber}. ${stepTitle}. ${stepStatus}`}
+                    onClick={() => setActiveStep(index)}
+                  >
+                    <span className="roadmap-node__point">{stepNumber}</span>
+                    <div className="">
+                      <span className="roadmap-node__title">{stepTitle}</span>
+                      <span className="roadmap-node__description">
+                        {stepDescription}
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              ),
+            )}
           </div>
         </div>
       </div>
@@ -141,21 +213,25 @@ export function LandingPage({ locale = "en" }: { locale?: Locale }) {
   const phoneImage = phoneImages[locale];
 
   useEffect(() => {
-    document.documentElement.lang = locales.find((item) => item.id === locale)?.lang ?? "en";
+    document.documentElement.lang =
+      locales.find((item) => item.id === locale)?.lang ?? "en";
 
-    const steps = Array.from(document.querySelectorAll<HTMLElement>(".roadmap-reveal"));
+    const steps = Array.from(
+      document.querySelectorAll<HTMLElement>(".roadmap-reveal"),
+    );
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       steps.forEach((step) => step.classList.add("is-visible"));
       return;
     }
 
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      }),
+      (entries) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        }),
       { rootMargin: "0px 0px -12% 0px", threshold: 0.14 },
     );
     steps.forEach((step) => observer.observe(step));
@@ -168,11 +244,19 @@ export function LandingPage({ locale = "en" }: { locale?: Locale }) {
 
       <section className="hero-only" aria-labelledby="hero-title">
         <div className="hand-phone-wrap">
-          <img className="hand-phone" src={phoneImage.src} width="1700" height="1586" alt={phoneImage.alt} />
+          <img
+            className="hand-phone"
+            src={phoneImage.src}
+            width="1700"
+            height="1586"
+            alt={phoneImage.alt}
+          />
         </div>
 
         <section className="hero-message">
-          <h1 id="hero-title" aria-label={heroLines[locale].join(" ")}><HeroTitle lines={heroLines[locale]} /></h1>
+          <h1 id="hero-title" aria-label={heroLines[locale].join(" ")}>
+            <HeroTitle lines={heroLines[locale]} />
+          </h1>
           <p>{t.hero[2]}</p>
           <div className="platform-badges" aria-label={t.hero[5]}>
             <PlatformBadge platform="iPhone" label={availability[locale]} />
@@ -184,7 +268,6 @@ export function LandingPage({ locale = "en" }: { locale?: Locale }) {
             />
           </div>
         </section>
-
       </section>
 
       <div className="decor-light" />

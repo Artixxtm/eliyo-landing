@@ -4,7 +4,8 @@
   font-weight: 400 700;
   font-display: block;
   src: url("/fonts/inter-cyrillic-ext.woff2") format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  unicode-range:
+    U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
 /* Eliyo Lab */
@@ -27,7 +28,8 @@
 .lab-invite-section {
   position: relative;
   z-index: 2;
-  padding: clamp(0px, 1vw, 18px) max(28px, calc((100vw - 1660px) / 2)) clamp(64px, 6vw, 96px);
+  padding: clamp(0px, 1vw, 18px) max(28px, calc((100vw - 1660px) / 2))
+    clamp(64px, 6vw, 96px);
   background: var(--paper);
 }
 
@@ -73,7 +75,9 @@
   font-size: 13px;
   font-weight: 650;
   text-decoration: none;
-  transition: background-color 160ms ease, transform 160ms ease;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
 }
 
 .lab-invite > a:hover,
@@ -129,7 +133,10 @@
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 13px;
   font-weight: 600;
-  transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
 }
 
 .lab-suggest span {
@@ -276,7 +283,10 @@
   color: var(--ink);
   cursor: pointer;
   grid-area: vote;
-  transition: box-shadow 160ms ease, color 160ms ease, transform 160ms ease;
+  transition:
+    box-shadow 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
 }
 
 .lab-vote span {
@@ -398,7 +408,11 @@
   background: rgba(5, 5, 5, 0.06);
   color: var(--ink);
   cursor: pointer;
-  font: 25px/1 "Inter", Arial, Helvetica, sans-serif;
+  font:
+    25px/1 "Inter",
+    Arial,
+    Helvetica,
+    sans-serif;
   place-items: center;
 }
 
@@ -455,7 +469,11 @@
   background: #fff;
   box-shadow: 0 10px 30px rgba(32, 27, 58, 0.08);
   color: var(--ink);
-  font: 14px/1.4 "Inter", Arial, Helvetica, sans-serif;
+  font:
+    14px/1.4 "Inter",
+    Arial,
+    Helvetica,
+    sans-serif;
 }
 
 .lab-idea-form input:not([type="checkbox"]) {
@@ -471,7 +489,9 @@
 
 .lab-idea-form input:not([type="checkbox"]):focus,
 .lab-idea-form textarea:focus {
-  box-shadow: 0 12px 34px rgba(32, 27, 58, 0.1), 0 0 0 3px rgba(107, 88, 222, 0.14);
+  box-shadow:
+    0 12px 34px rgba(32, 27, 58, 0.1),
+    0 0 0 3px rgba(107, 88, 222, 0.14);
   outline: none;
 }
 
@@ -517,7 +537,9 @@
 }
 
 .lab-credit-toggle input:focus-visible + .lab-credit-check {
-  box-shadow: 0 8px 24px rgba(32, 27, 58, 0.12), 0 0 0 3px rgba(107, 88, 222, 0.16);
+  box-shadow:
+    0 8px 24px rgba(32, 27, 58, 0.12),
+    0 0 0 3px rgba(107, 88, 222, 0.16);
   outline: none;
 }
 
@@ -766,7 +788,10 @@
   font-weight: 400 700;
   font-display: block;
   src: url("/fonts/inter-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
@@ -775,7 +800,10 @@
   font-weight: 400 700;
   font-display: block;
   src: url("/fonts/inter-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
@@ -784,7 +812,8 @@
   font-weight: 500 800;
   font-display: block;
   src: url("/fonts/manrope-cyrillic-ext.woff2") format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  unicode-range:
+    U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
 @font-face {
@@ -802,7 +831,10 @@
   font-weight: 500 800;
   font-display: block;
   src: url("/fonts/manrope-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
@@ -811,7 +843,10 @@
   font-weight: 500 800;
   font-display: block;
   src: url("/fonts/manrope-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
 }
 
 :root {
@@ -889,7 +924,7 @@ button {
 }
 
 .decor-light {
-    /* background:
+  /* background:
     radial-gradient(circle at 80% 28%, rgba(255, 255, 255, 0.94), transparent 28%),
     linear-gradient(180deg, #f4f3f1 0%, #f2f1ef 68%, #efedef 100%); */
 }
@@ -972,7 +1007,9 @@ button {
   font-size: 19px;
   font-weight: 700;
   text-decoration: none;
-  transition: color 180ms ease, background-color 180ms ease;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
 }
 
 .language-tile a:hover,
@@ -1090,7 +1127,9 @@ button {
   flex: 0 0 auto;
   padding-right: clamp(18px, 1.55vw, 24px);
   cursor: pointer;
-  transition: box-shadow 180ms ease, transform 180ms ease;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .platform-badge--link:hover,
@@ -1211,7 +1250,10 @@ button {
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   cursor: pointer;
-  transition: color 160ms ease, opacity 160ms ease, transform 160ms ease;
+  transition:
+    color 160ms ease,
+    opacity 160ms ease,
+    transform 160ms ease;
 }
 
 .cookie-consent--settings {
@@ -1384,7 +1426,11 @@ button {
   white-space: nowrap;
   text-align: center;
   text-decoration: none;
-  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .site-footer--landing .site-footer__links a:hover,
@@ -1414,7 +1460,11 @@ button {
 .resource-shell {
   min-height: 100dvh;
   background:
-    radial-gradient(circle at 88% 4%, rgba(115, 87, 232, 0.09), transparent 26rem),
+    radial-gradient(
+      circle at 88% 4%,
+      rgba(115, 87, 232, 0.09),
+      transparent 26rem
+    ),
     var(--paper);
 }
 
@@ -1784,7 +1834,8 @@ button {
   position: relative;
   z-index: 2;
   isolation: isolate;
-  padding: clamp(142px, 11vw, 196px) max(28px, calc((100vw - 1660px) / 2)) clamp(72px, 7vw, 112px);
+  padding: clamp(142px, 11vw, 196px) max(28px, calc((100vw - 1660px) / 2))
+    clamp(72px, 7vw, 112px);
   background: var(--paper);
 }
 
@@ -1851,7 +1902,11 @@ button {
   flex-direction: column;
   padding: clamp(30px, 3.2vw, 54px);
   background:
-    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.76), transparent 34%),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(255, 255, 255, 0.76),
+      transparent 34%
+    ),
     linear-gradient(145deg, #e7e2ff 0%, #d6ccff 100%);
 }
 
@@ -2408,7 +2463,8 @@ button {
   position: relative;
   z-index: 2;
   overflow: hidden;
-  padding: clamp(86px, 7vw, 122px) max(28px, calc((100vw - 1660px) / 2)) clamp(104px, 8vw, 142px);
+  padding: clamp(86px, 7vw, 122px) max(28px, calc((100vw - 1660px) / 2))
+    clamp(104px, 8vw, 142px);
   background: var(--paper);
 }
 
@@ -2495,7 +2551,9 @@ button {
   content: "";
   opacity: 0;
   transform: scaleX(0.45);
-  transition: opacity 180ms ease, transform 220ms ease;
+  transition:
+    opacity 180ms ease,
+    transform 220ms ease;
 }
 
 .how-steps button > span {
@@ -2872,7 +2930,6 @@ button {
   background: #fff;
   border-radius: 3.5rem;
   box-shadow: 0 18px 60px rgba(32, 27, 58, 0.08);
-
 }
 
 .roadmap-stage::after {
@@ -2946,7 +3003,6 @@ button {
   font-size: 13px;
   line-height: 1.5;
 }
-
 
 .roadmap-path {
   position: absolute;
@@ -3066,7 +3122,12 @@ button {
   font-family: "Manrope", Arial, Helvetica, sans-serif;
   font-size: 9px;
   font-weight: 750;
-  transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .roadmap-node__description {
@@ -3110,7 +3171,9 @@ button {
 .roadmap-node.is-active .roadmap-node__point {
   border: 6px solid rgba(255, 255, 255, 0.9);
   background: var(--violet);
-  box-shadow: 0 0 0 1px var(--violet), 0 14px 34px rgba(72, 50, 173, 0.27);
+  box-shadow:
+    0 0 0 1px var(--violet),
+    0 14px 34px rgba(72, 50, 173, 0.27);
   color: #fff;
   transform: scale(1.18);
 }
@@ -3133,7 +3196,9 @@ button {
 .roadmap-reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 650ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 650ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition:
+    opacity 650ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 650ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .roadmap-reveal.is-visible {
@@ -3165,7 +3230,6 @@ button {
   .roadmap-detail h3 {
     font-size: 36px;
   }
-
 
   .roadmap-node {
     width: 122px;
@@ -3229,7 +3293,7 @@ button {
 
   .roadmap-path--mobile {
     top: 20px;
-    left: 0;
+    left: 13px;
     display: block;
     width: 60px;
     height: 650px;
@@ -3243,7 +3307,11 @@ button {
   .roadmap-nodes {
     position: relative;
     inset: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     margin-top: 0;
+    padding-left: 1.2rem;
   }
 
   .roadmap-node-slot,
@@ -3260,15 +3328,33 @@ button {
     height: 104px;
   }
 
+  .roadmap-node-slot--2 {
+    left: 2.75%;
+  }
+
+  .roadmap-node-slot--3 {
+    left: -3.5%;
+  }
+
+  .roadmap-node-slot--4 {
+    left: 2.75%;
+  }
+
+  .roadmap-node-slot--5 {
+    left: 6.5%;
+  }
+
+  .roadmap-node-slot--6 {
+    left: -3.75%;
+  }
+
   .roadmap-node {
     position: relative;
     top: auto;
     left: auto;
-    display: grid;
     width: 100%;
     height: 100%;
-    grid-template-columns: 60px minmax(0, 1fr);
-    grid-template-rows: auto auto;
+    display: flex;
     align-content: center;
     align-items: center;
     justify-items: start;
@@ -3277,13 +3363,7 @@ button {
     transform: none;
   }
 
-  .roadmap-node__point {
-    grid-column: 1;
-    justify-self: center;
-  }
-
   .roadmap-node__title {
-    grid-column: 2;
     max-width: 250px;
     margin: 0;
     padding-left: 13px;
@@ -3292,7 +3372,6 @@ button {
   }
 
   .roadmap-node__description {
-    grid-column: 2;
     display: none;
     max-width: 260px;
     padding-left: 13px;
@@ -3310,7 +3389,6 @@ button {
   .roadmap-node.is-active .roadmap-node__point {
     transform: scale(1.12);
   }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3341,7 +3419,12 @@ button {
     bottom: -22%;
     left: -50%;
     height: 55%;
-    background: radial-gradient(ellipse at 50% 80%, rgba(119, 91, 236, 0.43), rgba(165, 145, 240, 0.17) 42%, transparent 69%);
+    background: radial-gradient(
+      ellipse at 50% 80%,
+      rgba(119, 91, 236, 0.43),
+      rgba(165, 145, 240, 0.17) 42%,
+      transparent 69%
+    );
   }
 
   .top-controls {
@@ -3478,7 +3561,8 @@ button {
     width: min(130vw, 65dvh);
     max-width: none;
     transform: none;
-    animation: phone-mobile-in 950ms cubic-bezier(0.18, 0.85, 0.22, 1) 120ms both;
+    animation: phone-mobile-in 950ms cubic-bezier(0.18, 0.85, 0.22, 1) 120ms
+      both;
   }
 
   .hand-phone {
@@ -3567,7 +3651,8 @@ button {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 8px 16px;
-  }  .resource-header {
+  }
+  .resource-header {
     width: calc(100% - 28px);
     padding: 14px 0;
   }
