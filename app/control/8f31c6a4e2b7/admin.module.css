@@ -16,8 +16,6 @@
   width: min(100%, 450px);
   padding: 38px;
   border-radius: 32px;
-  background: #fff;
-  box-shadow: 0 28px 90px rgba(35, 29, 54, 0.11);
 }
 
 .brand {

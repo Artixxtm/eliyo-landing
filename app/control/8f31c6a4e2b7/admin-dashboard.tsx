@@ -148,13 +148,9 @@ export function AdminDashboard() {
     return (
       <main className={styles.loginPage}>
         <section className={styles.loginCard}>
-          <div className={styles.brand}><Image src="/eliyo-mark.svg" alt="" width={38} height={38} priority /><span>Eliyo</span></div>
-          <p className={styles.eyebrow}>Private operations</p>
-          <h1>Control center.</h1>
-          <p className={styles.loginIntro}>Sign in with the approved Eliyo account. Access is verified against production authentication.</p>
           <form onSubmit={login} className={styles.loginForm}>
-            <label>Email<input name="email" type="email" autoComplete="username" required /></label>
-            <label>Password<input name="password" type="password" autoComplete="current-password" minLength={8} required /></label>
+            <label>Email<input name="email" type="email" autoComplete="username" placeholder="jhon.doe@smth.com" required /></label>
+            <label>Password<input name="password" type="password" autoComplete="current-password" placeholder="********" minLength={8} required /></label>
             {error && <p className={styles.error} role="alert">{error}</p>}
             <button type="submit" disabled={busy}>{busy ? "Checking…" : "Continue"}</button>
           </form>
@@ -180,7 +176,7 @@ export function AdminDashboard() {
 
       <section className={styles.content}>
         <header className={styles.topbar}>
-          <div><p className={styles.eyebrow}>Eliyo operations</p><h1>Dashboard</h1></div>
+          <h1>Dashboard</h1>
           <div className={styles.actions}>
             <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search current data" aria-label="Search current data" />
             <button type="button" onClick={loadData} disabled={busy}>{busy ? "Refreshing…" : "Refresh"}</button>
@@ -199,7 +195,7 @@ export function AdminDashboard() {
 
         {data && <section className={styles.activation} aria-label="Activation and retention">
           <div className={styles.activationHeading}>
-            <div><p>Product health</p><h2>Activation</h2></div>
+            <h2>Activation</h2>
             <span>{data.activation.source === "instrumented" ? "App activity · legacy accounts backfilled from sign-ins" : "Sign-in proxy until lifecycle migration is live"}</span>
           </div>
           <div className={styles.activationGrid}>
@@ -234,7 +230,7 @@ export function AdminDashboard() {
         </section>}
 
         <div className={styles.sectionHeading}>
-          <div><p>{tab === "feedback" ? "Inbox" : tab === "ideas" ? "Community" : tab === "vehicles" ? "Garage data" : tab === "catalog" ? "Vehicle data" : "Roadmap"}</p><h2>{tab === "feedback" ? "App feedback" : tab === "ideas" ? "Submitted ideas" : tab === "vehicles" ? "Vehicle mix" : tab === "catalog" ? "Missing vehicles" : "Published features"}</h2></div>
+          <h2>{tab === "feedback" ? "App feedback" : tab === "ideas" ? "Submitted ideas" : tab === "vehicles" ? "Vehicle mix" : tab === "catalog" ? "Missing vehicles" : "Published features"}</h2>
           {data && <span>Updated {formatDate(data.generatedAt)}</span>}
         </div>
 
