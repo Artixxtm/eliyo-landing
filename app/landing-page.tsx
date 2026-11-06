@@ -40,6 +40,13 @@ const availability: Record<Locale, string> = {
   ru: "Скоро",
 };
 
+const appStoreBadge: Record<Locale, { label: string; title: string }> = {
+  en: { label: "Now on the App Store", title: "Download" },
+  uk: { label: "Вже в App Store", title: "Завантажити" },
+  pl: { label: "Już w App Store", title: "Pobierz" },
+  ru: { label: "Уже в App Store", title: "Скачать" },
+};
+
 const googlePlayBadge: Record<Locale, { label: string; title: string }> = {
   en: { label: "Now on Google Play", title: "Download" },
   uk: { label: "Вже в Google Play", title: "Завантажити" },
@@ -117,7 +124,7 @@ function ProductStory({ locale }: { locale: Locale }) {
 
 function Roadmap({ locale }: { locale: Locale }) {
   const t = copy[locale].roadmap;
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
   const [number, title, status, description] = t.items[activeStep];
 
   return (
@@ -184,7 +191,7 @@ function Roadmap({ locale }: { locale: Locale }) {
                   key={stepNumber}
                 >
                   <button
-                    className={`roadmap-node ${activeStep === index ? "is-active" : ""} ${index === 0 ? "is-current" : ""}`}
+                    className={`roadmap-node ${activeStep === index ? "is-active" : ""} ${index === 1 || index === 0 ? "is-current" : ""}`}
                     type="button"
                     aria-pressed={activeStep === index}
                     aria-label={`${stepNumber}. ${stepTitle}. ${stepStatus}`}
@@ -259,7 +266,12 @@ export function LandingPage({ locale = "en" }: { locale?: Locale }) {
           </h1>
           <p>{t.hero[2]}</p>
           <div className="platform-badges" aria-label={t.hero[5]}>
-            <PlatformBadge platform="iPhone" label={availability[locale]} />
+            <PlatformBadge
+              platform="iPhone"
+              label={appStoreBadge[locale].label}
+              title={appStoreBadge[locale].title}
+              href="https://apps.apple.com/us/app/eliyo/id6819023327"
+            />
             <PlatformBadge
               platform="Android"
               label={googlePlayBadge[locale].label}

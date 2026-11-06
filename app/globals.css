@@ -3038,8 +3038,8 @@ button {
 
 .roadmap-path__progress {
   stroke: var(--violet);
-  stroke-dasharray: 205 1800;
-  stroke-dashoffset: 205;
+  stroke-dasharray: 330 1800;
+  stroke-dashoffset: 330;
   stroke-width: 2;
   transition: stroke-dashoffset 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) 180ms;
 }
@@ -3300,8 +3300,8 @@ button {
   }
 
   .roadmap-path__progress {
-    stroke-dasharray: 105 900;
-    stroke-dashoffset: 105;
+    stroke-dasharray: 185 900;
+    stroke-dashoffset: 185;
   }
 
   .roadmap-nodes {
