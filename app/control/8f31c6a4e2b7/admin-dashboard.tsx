@@ -2,16 +2,21 @@
 
 import Image from "next/image";
 import { FormEvent, useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
-import type { AdminDashboardData, FeedbackStatus, IdeaStatus } from "@/lib/eliyo-admin-types";
+import type { AdminDashboardData, CatalogRequestStatus, FeedbackStatus, IdeaStatus } from "@/lib/eliyo-admin-types";
 import styles from "./admin.module.css";
 
 type Tab = "feedback" | "ideas" | "vehicles" | "catalog" | "features";
 
 const feedbackStatuses: FeedbackStatus[] = ["new", "reviewed", "planned", "closed"];
 const ideaStatuses: IdeaStatus[] = ["pending", "approved", "rejected", "published"];
+const catalogStatuses: CatalogRequestStatus[] = ["pending", "implemented", "rejected", "released"];
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(new Date(value));
+}
+
+function formatOptionalDate(value: string | null) {
+  return value ? formatDate(value) : "—";
 }
 
 function percentage(value: number, total: number) {
@@ -27,6 +32,7 @@ export function AdminDashboard() {
   const [adminEmail, setAdminEmail] = useState("");
   const [data, setData] = useState<AdminDashboardData | null>(null);
   const [tab, setTab] = useState<Tab>("feedback");
+  const [catalogStatus, setCatalogStatus] = useState<CatalogRequestStatus>("pending");
   const [query, setQuery] = useState("");
   const [busy, setBusy] = useState(false);
   const [updating, setUpdating] = useState<string | null>(null);
@@ -129,7 +135,7 @@ export function AdminDashboard() {
       ...data,
       feedback: data.feedback.filter((item) => `${item.type} ${item.message} ${item.replyEmail || ""} ${item.platform} ${item.status}`.toLowerCase().includes(normalizedQuery)),
       ideas: data.ideas.filter((item) => `${item.title} ${item.description || ""} ${item.locale} ${item.status}`.toLowerCase().includes(normalizedQuery)),
-      catalog: data.catalog.filter((item) => `${item.make} ${item.model} ${item.year}`.toLowerCase().includes(normalizedQuery)),
+      catalog: data.catalog.filter((item) => `${item.make} ${item.model} ${item.year} ${item.status} ${item.resolvedMake || ""} ${item.resolvedModel || ""} ${item.catalogVersion || ""}`.toLowerCase().includes(normalizedQuery)),
       features: data.features.filter((item) => `${item.id} ${item.title} ${item.status}`.toLowerCase().includes(normalizedQuery)),
       vehicleInventory: {
         ...data.vehicleInventory,
@@ -167,7 +173,7 @@ export function AdminDashboard() {
           {(["feedback", "ideas", "vehicles", "catalog", "features"] as Tab[]).map((item) => (
             <button key={item} className={tab === item ? styles.activeNav : ""} type="button" onClick={() => setTab(item)}>
               <span>{item === "feedback" ? "Feedback" : item === "ideas" ? "Lab ideas" : item === "vehicles" ? "Vehicle mix" : item === "catalog" ? "Catalog requests" : "Feature votes"}</span>
-              <small>{item === "feedback" ? data?.counts.newFeedback : item === "ideas" ? data?.counts.pendingIdeas : item === "vehicles" ? data?.vehicleInventory.total : item === "catalog" ? data?.catalog.length : data?.features.length}</small>
+              <small>{item === "feedback" ? data?.counts.newFeedback : item === "ideas" ? data?.counts.pendingIdeas : item === "vehicles" ? data?.vehicleInventory.total : item === "catalog" ? data?.counts.catalogPendingGroups : data?.features.length}</small>
             </button>
           ))}
         </nav>
@@ -189,7 +195,7 @@ export function AdminDashboard() {
           <button type="button" onClick={() => setTab("feedback")}><span>New feedback</span><strong>{data?.counts.newFeedback ?? "—"}</strong></button>
           <button type="button" onClick={() => setTab("ideas")}><span>Ideas to review</span><strong>{data?.counts.pendingIdeas ?? "—"}</strong></button>
           <button type="button" onClick={() => setTab("features")}><span>Feature votes</span><strong>{data?.counts.totalVotes ?? "—"}</strong></button>
-          <button type="button" onClick={() => setTab("catalog")}><span>Catalog demand</span><strong>{data?.counts.catalogRequests ?? "—"}</strong></button>
+          <button type="button" onClick={() => { setCatalogStatus("pending"); setTab("catalog"); }}><span>Pending requests</span><strong>{data?.counts.catalogRequests ?? "—"}</strong></button>
           <button type="button" onClick={() => setTab("vehicles")}><span>Total vehicles</span><strong>{data?.vehicleInventory.total ?? "—"}</strong></button>
         </section>
 
@@ -230,7 +236,7 @@ export function AdminDashboard() {
         </section>}
 
         <div className={styles.sectionHeading}>
-          <h2>{tab === "feedback" ? "App feedback" : tab === "ideas" ? "Submitted ideas" : tab === "vehicles" ? "Vehicle mix" : tab === "catalog" ? "Missing vehicles" : "Published features"}</h2>
+          <h2>{tab === "feedback" ? "App feedback" : tab === "ideas" ? "Submitted ideas" : tab === "vehicles" ? "Vehicle mix" : tab === "catalog" ? catalogStatus === "pending" ? "Missing vehicles" : `${catalogStatus[0].toUpperCase()}${catalogStatus.slice(1)} catalog requests` : "Published features"}</h2>
           {data && <span>Updated {formatDate(data.generatedAt)}</span>}
         </div>
 
@@ -292,9 +298,18 @@ export function AdminDashboard() {
           </tbody></table>{!filtered?.vehicleInventory.models.length && <p className={styles.empty}>No vehicles found.</p>}</div>
         </>}
 
-        {tab === "catalog" && <div className={styles.tableWrap}><table><thead><tr><th>Vehicle</th><th>Year</th><th>Users</th><th>Requests</th><th>Last request</th></tr></thead><tbody>
-          {filtered?.catalog.map((item) => <tr key={item.dedupeKey}><td><strong>{item.make} {item.model}</strong></td><td>{item.year}</td><td>{item.requestingUsers}</td><td>{item.totalRequests}</td><td>{formatDate(item.lastRequestedAt)}</td></tr>)}
-        </tbody></table>{!filtered?.catalog.length && <p className={styles.empty}>No catalog requests found.</p>}</div>}
+        {tab === "catalog" && <>
+          <div className={styles.catalogTabs} role="tablist" aria-label="Catalog request status">
+            {catalogStatuses.map((status) => <button key={status} type="button" role="tab" aria-selected={catalogStatus === status} className={catalogStatus === status ? styles.catalogTabActive : ""} onClick={() => setCatalogStatus(status)}>
+              <span>{status[0].toUpperCase()}{status.slice(1)}</span><small>{data?.counts.catalogGroups[status] ?? 0}</small>
+            </button>)}
+          </div>
+          <div className={`${styles.tableWrap} ${styles.catalogTable}`}><table><thead><tr><th>Vehicle</th><th>Year</th><th>Status</th><th>Users</th><th>Requests</th><th>Last request</th><th>Resolved as</th><th>Catalog version</th><th>Implemented</th><th>Released</th></tr></thead><tbody>
+            {filtered?.catalog.filter((item) => item.status === catalogStatus).map((item) => <tr key={`${item.dedupeKey}:${item.status}`}>
+              <td><strong>{item.make} {item.model}</strong></td><td>{item.year}</td><td><span className={`${styles.statusBadge} ${styles[`catalog_${item.status}`]}`}>{item.status}</span></td><td>{item.requestingUsers}</td><td>{item.totalRequests}</td><td>{formatDate(item.lastRequestedAt)}</td><td>{item.resolvedMake || item.resolvedModel ? `${item.resolvedMake ?? ""} ${item.resolvedModel ?? ""}`.trim() : "—"}</td><td>{item.catalogVersion ?? "—"}</td><td>{formatOptionalDate(item.implementedAt)}</td><td>{formatOptionalDate(item.releasedAt)}</td>
+            </tr>)}
+          </tbody></table>{!filtered?.catalog.some((item) => item.status === catalogStatus) && <p className={styles.empty}>No {catalogStatus} catalog requests found.</p>}</div>
+        </>}
 
         {tab === "features" && <div className={styles.list}>
           {filtered?.features.map((item) => <article className={`${styles.item} ${styles.feature}`} key={item.id}><div><div className={styles.itemMeta}><Meta>{item.id}</Meta><span className={styles.badge}>{item.status}</span><Meta>{item.source}</Meta>{!item.published && <Meta>Hidden</Meta>}<Meta>Updated {formatDate(item.updatedAt)}</Meta></div><h3>{item.title}</h3></div><strong className={styles.votes}>{item.voteCount}<small>votes</small></strong></article>)}

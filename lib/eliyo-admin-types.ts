@@ -1,5 +1,6 @@
 export type FeedbackStatus = "new" | "reviewed" | "planned" | "closed";
 export type IdeaStatus = "pending" | "approved" | "rejected" | "published";
+export type CatalogRequestStatus = "pending" | "implemented" | "released" | "rejected";
 
 export type AdminFeedback = {
   id: string;
@@ -40,9 +41,15 @@ export type AdminCatalogRequest = {
   make: string;
   model: string;
   year: number;
+  status: CatalogRequestStatus;
   requestingUsers: number;
   totalRequests: number;
   lastRequestedAt: string;
+  resolvedMake: string | null;
+  resolvedModel: string | null;
+  catalogVersion: string | null;
+  implementedAt: string | null;
+  releasedAt: string | null;
 };
 
 export type AdminFeature = {
@@ -91,6 +98,8 @@ export type AdminDashboardData = {
     pendingIdeas: number;
     totalVotes: number;
     catalogRequests: number;
+    catalogPendingGroups: number;
+    catalogGroups: Record<CatalogRequestStatus, number>;
   };
   feedback: AdminFeedback[];
   ideas: AdminIdea[];

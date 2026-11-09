@@ -10,6 +10,7 @@ import type {
   AdminFeedback,
   AdminIdea,
   AdminVehicleInventory,
+  CatalogRequestStatus,
   FeedbackStatus,
   IdeaStatus,
 } from "./eliyo-admin-types";
@@ -56,9 +57,14 @@ type CatalogRow = {
   make: string;
   model: string;
   year: number;
-  requesting_users: number;
-  total_requests: number;
+  request_count: number;
   last_requested_at: string;
+  status: CatalogRequestStatus;
+  resolved_make: string | null;
+  resolved_model: string | null;
+  catalog_version: string | null;
+  implemented_at: string | null;
+  released_at: string | null;
 };
 
 type FeatureRow = {
@@ -270,9 +276,83 @@ async function getVehicleInventory(client: ReturnType<typeof serverClient>): Pro
   };
 }
 
+function latestDate(left: string | null, right: string | null) {
+  if (!left) return right;
+  if (!right) return left;
+  return new Date(left).getTime() >= new Date(right).getTime() ? left : right;
+}
+
+function catalogTimestamp(item: AdminCatalogRequest) {
+  if (item.status === "implemented") return item.implementedAt ?? item.lastRequestedAt;
+  if (item.status === "released") return item.releasedAt ?? item.lastRequestedAt;
+  return item.lastRequestedAt;
+}
+
+async function getCatalogRequests(client: ReturnType<typeof serverClient>): Promise<AdminCatalogRequest[]> {
+  const rows: CatalogRow[] = [];
+  const pageSize = 1000;
+
+  for (let from = 0; ; from += pageSize) {
+    const { data, error } = await client
+      .from("vehicle_catalog_requests")
+      .select("dedupe_key,make,model,year,request_count,last_requested_at,status,resolved_make,resolved_model,catalog_version,implemented_at,released_at")
+      .order("dedupe_key", { ascending: true })
+      .order("status", { ascending: true })
+      .order("last_requested_at", { ascending: true })
+      .range(from, from + pageSize - 1);
+    if (error) throw error;
+
+    const page = (data ?? []) as CatalogRow[];
+    rows.push(...page);
+    if (page.length < pageSize) break;
+  }
+
+  const groups = new Map<string, AdminCatalogRequest>();
+  for (const row of rows) {
+    const key = `${row.dedupe_key}:${row.status}`;
+    const existing = groups.get(key);
+    if (existing) {
+      existing.requestingUsers += 1;
+      existing.totalRequests += row.request_count;
+      existing.lastRequestedAt = latestDate(existing.lastRequestedAt, row.last_requested_at) ?? row.last_requested_at;
+      existing.implementedAt = latestDate(existing.implementedAt, row.implemented_at);
+      existing.releasedAt = latestDate(existing.releasedAt, row.released_at);
+      existing.resolvedMake ??= row.resolved_make;
+      existing.resolvedModel ??= row.resolved_model;
+      existing.catalogVersion ??= row.catalog_version;
+      continue;
+    }
+
+    groups.set(key, {
+      dedupeKey: row.dedupe_key,
+      make: row.make,
+      model: row.model,
+      year: row.year,
+      status: row.status,
+      requestingUsers: 1,
+      totalRequests: row.request_count,
+      lastRequestedAt: row.last_requested_at,
+      resolvedMake: row.resolved_make,
+      resolvedModel: row.resolved_model,
+      catalogVersion: row.catalog_version,
+      implementedAt: row.implemented_at,
+      releasedAt: row.released_at,
+    });
+  }
+
+  const statusOrder: Record<CatalogRequestStatus, number> = { pending: 0, implemented: 1, rejected: 2, released: 3 };
+  return [...groups.values()].sort((left, right) =>
+    statusOrder[left.status] - statusOrder[right.status]
+    || new Date(catalogTimestamp(right)).getTime() - new Date(catalogTimestamp(left)).getTime()
+    || (left.status === "pending" ? right.totalRequests - left.totalRequests : 0)
+    || left.make.localeCompare(right.make)
+    || left.model.localeCompare(right.model),
+  );
+}
+
 export async function getAdminDashboardData(): Promise<AdminDashboardData> {
   const client = serverClient();
-  const [feedbackResult, ideasResult, catalogResult, featuresResult, feedbackCountResult, ideasCountResult, activation, vehicleInventory] = await Promise.all([
+  const [feedbackResult, ideasResult, catalog, featuresResult, feedbackCountResult, ideasCountResult, activation, vehicleInventory] = await Promise.all([
     client
       .from("feedback")
       .select("id,user_id,type,message,screenshot_path,app_version,build_version,platform,os_version,device_model,locale,vehicle_id,wants_reply,reply_email,runtime,status,created_at")
@@ -283,12 +363,7 @@ export async function getAdminDashboardData(): Promise<AdminDashboardData> {
       .select("id,title,description,locale,attribution_name,attribution_url,consent_to_publish_attribution,status,created_at,reviewed_at,published_feature_id")
       .order("created_at", { ascending: false })
       .limit(200),
-    client
-      .from("vehicle_catalog_request_popularity")
-      .select("dedupe_key,make,model,year,requesting_users,total_requests,last_requested_at")
-      .order("total_requests", { ascending: false })
-      .order("last_requested_at", { ascending: false })
-      .limit(200),
+    getCatalogRequests(client),
     client
       .from("eliyo_lab_features")
       .select("id,title,status,source,published,vote_count,updated_at")
@@ -299,7 +374,7 @@ export async function getAdminDashboardData(): Promise<AdminDashboardData> {
     getVehicleInventory(client),
   ]);
 
-  for (const result of [feedbackResult, ideasResult, catalogResult, featuresResult, feedbackCountResult, ideasCountResult]) {
+  for (const result of [feedbackResult, ideasResult, featuresResult, feedbackCountResult, ideasCountResult]) {
     if (result.error) throw result.error;
   }
 
@@ -346,16 +421,6 @@ export async function getAdminDashboardData(): Promise<AdminDashboardData> {
     publishedFeatureId: row.published_feature_id,
   }));
 
-  const catalog: AdminCatalogRequest[] = ((catalogResult.data ?? []) as CatalogRow[]).map((row) => ({
-    dedupeKey: row.dedupe_key,
-    make: row.make,
-    model: row.model,
-    year: row.year,
-    requestingUsers: row.requesting_users,
-    totalRequests: row.total_requests,
-    lastRequestedAt: row.last_requested_at,
-  }));
-
   const features: AdminFeature[] = ((featuresResult.data ?? []) as FeatureRow[]).map((row) => ({
     id: row.id,
     title: titleForAdmin(row.title),
@@ -366,13 +431,21 @@ export async function getAdminDashboardData(): Promise<AdminDashboardData> {
     updatedAt: row.updated_at,
   }));
 
+  const catalogGroups = catalog.reduce<Record<CatalogRequestStatus, number>>((counts, item) => {
+    counts[item.status] += 1;
+    return counts;
+  }, { pending: 0, implemented: 0, released: 0, rejected: 0 });
+  const pendingCatalog = catalog.filter((item) => item.status === "pending");
+
   return {
     generatedAt: new Date().toISOString(),
     counts: {
       newFeedback: feedbackCountResult.count ?? 0,
       pendingIdeas: ideasCountResult.count ?? 0,
       totalVotes: features.reduce((sum, feature) => sum + feature.voteCount, 0),
-      catalogRequests: catalog.reduce((sum, item) => sum + item.totalRequests, 0),
+      catalogRequests: pendingCatalog.reduce((sum, item) => sum + item.totalRequests, 0),
+      catalogPendingGroups: catalogGroups.pending,
+      catalogGroups,
     },
     feedback,
     ideas,

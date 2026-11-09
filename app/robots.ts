@@ -3,7 +3,7 @@ export default function robots() {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/control/", "/api/internal/"],
+      disallow: ["/control/", "/api/internal/", "/invite/"],
     },
     sitemap: "https://eliyo.app/sitemap.xml",
   };

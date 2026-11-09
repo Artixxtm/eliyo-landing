@@ -19,7 +19,7 @@ export type LegalDocument = {
 
 const privacyEn: LegalDocument = {
   title: "Privacy Policy",
-  updated: "Last updated: 27.10.2026",
+  updated: "Last updated: 09.11.2026",
   intro: [
     "Eliyo is operated by Artem Naumenko, an individual based in Poland.",
     "Contact: eliyo.app@gmail.com",
@@ -129,6 +129,7 @@ const privacyEn: LegalDocument = {
         "Vercel for website hosting and delivery.",
         "Microsoft Clarity for consent-based website analytics.",
         "Resend for authentication and transactional email delivery.",
+        "Expo for remote push-notification delivery.",
         "Professional advisers, authorities or other recipients where required by law or necessary to protect legal rights.",
       ],
       paragraphs: ["Providers receive only information reasonably necessary for their function. Third parties that receive user data must provide the same or equivalent protection described in this Privacy Policy and required by applicable platform rules. Where a provider processes personal data on Eliyo’s behalf, we require it to use the data only for the purpose for which it was provided and in accordance with applicable data-protection law. Information may also be disclosed as part of a merger, acquisition, restructuring or transfer of the Eliyo product, subject to applicable law and appropriate notice."],
@@ -162,12 +163,21 @@ const privacyEn: LegalDocument = {
       paragraphs: ["We use reasonable measures such as authenticated access, restricted database and storage permissions, private file storage, controlled file access, secure network transport and provider access controls. No service can guarantee absolute security. Eliyo is not an end-to-end encrypted storage service, and authorized systems and providers may process information where necessary to provide a requested feature. Report suspected compromise to eliyo.app@gmail.com."],
     },
     {
+      heading: "22. Vehicle sharing and invitations",
+      paragraphs: [
+        "When a vehicle owner creates and shares an invitation, the owner voluntarily instructs Eliyo to provide the invited person with access to the selected vehicle and its related records after the invitation is accepted. The owner chooses the Viewer or Editor role. Depending on that role, shared information may include vehicle details, mileage, maintenance plans, service history, expenses, documents, images, important dates and reminders. Viewers can review shared information only, while editors can add or change permitted records. Eliyo does not choose invitation recipients and does not make a shared vehicle public.",
+        "Invitation links contain a confidential single-use token, expire after seven days and should be shared only with the intended recipient. Eliyo stores a SHA-256 hash of the token rather than the original token. The recipient must sign in or register before viewing the invitation preview and accepting or declining it. Before acceptance, the app may show the inviter’s display name, the vehicle’s make, model, year or nickname, the proposed role and the expiration time. An invited participant does not need a subscription to accept the invitation.",
+        "After acceptance, the participant receives access to the vehicle and related data within the assigned role. Vehicle owners can change a participant’s role or remove access, and participants can leave a shared vehicle. Removing a participant or leaving prevents future access but does not delete records that the participant already added to the shared vehicle and cannot withdraw copies previously viewed, downloaded or exported.",
+        "Members of a shared vehicle may see each other’s display name, profile image and role. Users should invite only trusted people and must have the right to share any personal information contained in vehicle records, documents or images. Do not upload or share another person’s data without an appropriate right to do so.",
+      ],
+    },
+    {
       heading: "23. Sale of data and advertising",
       paragraphs: ["Eliyo does not sell personal data. Eliyo does not use personal data for third-party behavioral advertising and does not use an advertising SDK in the mobile application."],
     },
     {
       heading: "24. Device permissions",
-      paragraphs: ["Depending on the feature you use, Eliyo may request access to the camera to photograph a VIN, odometer, vehicle or document; photos and files to select vehicle images, documents or support attachments that you choose to upload; the microphone to record a voice request; and notifications to schedule maintenance and important-date reminders.", "Permissions are requested in context and can be changed in your device settings. As of the date of this Privacy Policy, the current release does not use precise or background location, Bluetooth tracking or continuous trip tracking. Reminder notifications are scheduled locally, and Eliyo does not currently collect a remote push-notification token."],
+      paragraphs: ["Depending on the feature you use, Eliyo may request access to the camera to photograph a VIN, odometer, vehicle or document; photos and files to select vehicle images, documents or support attachments that you choose to upload; the microphone to record a voice request; and notifications for reminders and account-related events.", "Permissions are requested in context and can be changed in your device settings. After you allow notifications, Eliyo may obtain an Expo push token and store the related account ID, token, platform, locale, enabled flag and timestamps. Remote push is currently used to notify a vehicle owner that an invitation was accepted or declined. Service and important-date reminders continue to be scheduled locally. Push notifications do not transmit document contents or a complete vehicle history.", "As of the date of this Privacy Policy, the current release does not use precise or background location, Bluetooth tracking or continuous trip tracking."],
     },
     {
       heading: "25. Changes and contact",
