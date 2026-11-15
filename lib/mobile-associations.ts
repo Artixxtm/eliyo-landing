@@ -6,7 +6,7 @@ export const appleAppSiteAssociation = {
     details: [
       {
         appID: "TVH7N73K2H.app.eliyo.mobile",
-        paths: ["/invite/*"],
+        paths: ["/invite/*", "/r/*"],
       },
     ],
   },

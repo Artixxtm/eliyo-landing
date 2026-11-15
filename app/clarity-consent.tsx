@@ -49,7 +49,9 @@ function withdrawClarity() {
 
 export function ClarityConsent() {
   const pathname = usePathname();
-  const isPrivateRoute = pathname.startsWith("/control/") || pathname.startsWith("/invite/");
+  const isPrivateRoute = pathname.startsWith("/control/")
+    || pathname.startsWith("/invite/")
+    || pathname.startsWith("/r/");
   const locale = localeFromPath(pathname);
   const t = resourceCopy[locale].cookies;
   const [visible, setVisible] = useState(false);
